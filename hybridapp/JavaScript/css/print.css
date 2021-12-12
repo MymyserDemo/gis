@@ -1,0 +1,63 @@
+.sheet {
+  width: 210mm;
+  height: 296mm;
+  page-break-after: always;
+}
+@page {
+  size: A4;
+  margin: 25mm;
+}
+@media print {
+  body {
+    width: 160mm;
+    margin-right: auto;
+    margin-left : auto;
+  }
+}
+@media screen {
+  body {
+    background: #eee;
+  }
+  .sheet {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 5mm;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px #000000 solid;
+  width: 100%;
+}
+
+td {
+  border: 1px #000000 solid;
+  height: 24px;
+}
+
+.BottomHidden {
+  border-bottom-style: hidden;
+}
+
+.BottomBorder2 {
+  border-bottom: 2px #FF0000 solid;
+}
+
+.TextLeft {
+  text-align: left;
+  margin-left: 5px;
+}
+
+.TextRight {
+  text-align: right;
+  margin-right: 5px;
+}
+
+.TextCenter {
+  text-align: center;
+}

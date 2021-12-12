@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>単票印刷</title>
+    <script type="text/javascript" src="app/js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/print.css">
+    <link rel="stylesheet" type="text/css" href="app/js/v4.0.1-dist/ol.css"/>
+    <script type="text/javascript" src="app/js/v4.0.1-dist/ol.js"></script>
+    <script type="text/javascript" src="app/js/proj4js-2.4.0/dist/proj4.js"></script>
+  </head>
+  <body>
+    <div style="width:155mm">
+      <h1>単票</h1>
+      <table>
+        <tr><td>地区</td><td id="field01"></td><td>種別</td><td id="field02"></td></tr>
+        <tr><td>点名</td><td id="field03" colspan="3"></td></tr>
+        <tr><td>X</td><td id="field04"></td><td>Y</td><td id="field05"></td></tr>
+        <tr><td class = "TextCenter" colspan="4">位置図</td></tr>
+        <tr><td colspan="4">
+          <div>
+          <div id="mainMap"></div>
+          </div>
+        </td></tr>
+      </table>
+    </div>
+    <script>
+    var printContents = decodeURI(location.search.substr(1)).split(",");
+    </script>
+    <script type="text/javascript" src="app/js/print.js"></script>
+  </body>
+</html>

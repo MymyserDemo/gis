@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ハイブリッドアプリ</title>
+    <script type="text/javascript" src="app/js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </head>
+  <body>
+    <script>
+    // ロードキュー
+    var loadProcess = [];
+    // ロード完了
+    function commonFileLoadComplete(responseText, instance) {
+        // データロード完了後
+        var data = [allocate(intArrayFromString(responseText), 'i8', ALLOC_STACK)];
+        Module._bridgingLoadCsvComplete(
+          data,
+          instance
+        );
+        // メモリ破棄
+        delete data;
+    }
+    // アプリ側ファイルロード
+    function commonFileLoad(fileName, instance, callback, layerNo) {
+      loadProcess[loadProcess.length] = [fileName, instance, callback, layerNo];
+    }
+    // ロード実行
+    function loadExecute(arg) {
+      var fileName = arg[0];
+      var instance = arg[1];
+      var callback = arg[2];
+      var layerNo = arg[3];
+      var req;
+      // ブラウザ種別判定
+      var userAgent = window.navigator.userAgent.toLowerCase();
+      if( userAgent.match(/(msie|MSIE)/) || userAgent.match(/(T|t)rident/) ) {
+        // IE
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+      } else {
+        // IE以外
+        req = new XMLHttpRequest();
+      }
+      // ロード
+      if(callback === undefined) {
+        req.open("get", Module.Pointer_stringify(fileName), true);
+      }
+      else {
+        req.open("get", fileName, true);
+      }
+      // データロード完了
+      req.onreadystatechange = function() {
+        if(req.readyState != 4) {
+          return;
+        }
+        //　ロード完了時のコールバックが指定されていない場合はハイブリッド側のコールバックを呼ぶ
+        if(callback === undefined) {
+          // ロード完了後の処理を実行する
+          commonFileLoadComplete(req.responseText, instance);
+        }
+        else {
+          // ロード完了後の処理を実行する
+          callback(req.responseText, layerNo);
+        }
+        setTimeout(nextLoading, 0);
+      };
+      req.send(null);
+    }
+    // キューにある次のロードを実行する
+    function nextLoading() {
+      if(loadProcess.length > 0) {
+        // ロード実行
+        loadExecute(loadProcess[0]);
+        // キューの先頭を削除
+        loadProcess.shift();
+      }
+    }
+    </script>
+    <script type="text/javascript" src="app/js/mainview.js"></script>
+    <script type="text/javascript" src="js/hybrid.js"></script>
+    <script>
+      $(document).ready(function() {
+        Module.cwrap('bridgingMainControllerStart', 'void')();
+
+        nextLoading();
+
+//        $(window).on("beforeunload",function(e){
+//          Module.cwrap('bridgingMainControllerFinalize', 'void')();
+//        });
+      });
+    </script>
+  </body>
+</html>

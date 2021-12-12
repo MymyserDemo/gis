@@ -1,0 +1,32 @@
+{ "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-9500,-33000], [-9500,-35000]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-9200,-33000], [-9200,-35000]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9200,-35000]
+      },
+      "properties": {
+        "label":"point4-1"
+      }
+    }
+  ]
+}

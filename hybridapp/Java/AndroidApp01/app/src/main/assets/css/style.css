@@ -1,0 +1,16 @@
+.optionWindow {
+  position:absolute;
+  right:5px;
+  top:50px;
+  width:200px;
+  background-color:rgba(240,240,255,0.6);
+  display:none;
+}
+
+.optionPanel {
+  position:absolute;
+  width:190px;
+  left:5px;
+  overflow-y:auto;
+  background-color:rgba(240,240,255,0.6);
+}

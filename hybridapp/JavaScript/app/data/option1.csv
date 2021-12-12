@@ -1,0 +1,11 @@
+layerName,initial,layerType,fileName,marker,lineColor,lineWidth,epsg,textColor,textSize,textAlign,textBaseline,font,offsetX,offsetY,minResolution,maxResolution,opacity
+背景,TRUE,TILE,NOTHING,app/data/marker/marker.png,#000000,2,4326,#000000,1,center,middle,Meiryo,0,0,5,20,1
+線１,TRUE,CSVLINE,app/data/map/line1.csv,app/data/marker/marker.png,#FF0000,4,4326,#000000,1,center,middle,Meiryo,0,0,0,12,1
+線２,TRUE,CSVLINE,app/data/map/line2.csv,app/data/marker/marker.png,#00FF00,2,2451,#000000,1,center,middle,Meiryo,0,0,0,12,1
+線３。０,TRUE,CSVLINE,app/data/map/line3.csv,app/data/marker/marker.png,#00FF00,2,2451,#000000,1,center,middle,Meiryo,0,0,0,12,1
+線３,TRUE,GEOJSON,app/data/map/line3.json,app/data/marker/marker.png,#0000FF,5,4326,#000000,1,center,middle,Meiryo,0,0,0,12,1
+線４,TRUE,GEOJSON,app/data/map/line4.json,app/data/marker/marker.png,#FF0000,8,2451,#000000,3,center,middle,Meiryo,0,0,0,12,1
+点１,TRUE,CSVPOINT,NOTHING,app/data/marker/marker.png,#000000,2,4326,#000000,1,center,middle,Meiryo,0,0,0,12,1
+点２,TRUE,CSVPOINT,NOTHING,app/data/marker/marker.png,#000000,2,4326,#000000,1,center,middle,Meiryo,0,0,0,12,1
+点３,TRUE,CSVPOINT,NOTHING,app/data/marker/marker1.png,#000000,2,4326,#000000,1,center,middle,Meiryo,0,0,0,12,1
+点選択,TRUE,CSVPOINT,NOTHING,app/data/marker/selected.png,#000000,2,4326,#000000,1,center,middle,Meiryo,0,0,0,12,1
